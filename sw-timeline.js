@@ -1,23 +1,22 @@
-
 const groups = new vis.DataSet();
 
 groups.add([
-{
-    id: "Events",
-    content: "Events"
-},
-{
-    id: "ERA",
-    content: "ERA"
-},
-{
-    id: "Films",
-    content: "Films"
-},
-{
-    id: "TV Series",
-    content: "TV Series"
-}
+    {
+        id: "Events",
+        content: "Events"
+    },
+    {
+        id: "ERA",
+        content: "ERA"
+    },
+    {
+        id: "Films",
+        content: "Films"
+    },
+    {
+        id: "TV Series",
+        content: "TV Series"
+    }
 ]);
 
 const characterGroups = characters.map(character => {

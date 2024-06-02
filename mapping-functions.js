@@ -3,20 +3,20 @@ function characterToItem(character) {
         id: character.name,
         content: character.name,
         start: toStartDate(character.birth),
-        end: toStartDate(character.death!==null?character.death:character.birth+100),
+        end: toStartDate(character.death !== null ? character.death : character.birth + 100),
         group: character.name + "_GR"
     };
 }
 
 function OLD_characterToItem(character) {
     let dateStart = character.birth;
-    let dateEnd = character.death!==null?character.death:character.birth+100;
+    let dateEnd = character.death !== null ? character.death : character.birth + 100;
     let items = [];
     let age = 0;
     for (let i = dateStart; i <= dateEnd; i++) {
         items.push({
-            id: character.name + "_ITEM_"+i,
-            content: ""+age,
+            id: character.name + "_ITEM_" + i,
+            content: "" + age,
             start: toStartDate(i),
             end: toEndDate(i),
             group: character.name + "_GR"
