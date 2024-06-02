@@ -2,9 +2,11 @@ function characterToItem(character) {
     return {
         id: character.name,
         content: character.name,
+        title: character.name,
         start: toStartDate(character.birth),
         end: toStartDate(character.death !== null ? character.death : character.birth + 100),
-        group: character.name + "_GR"
+        group: "Characters",
+        editable: { updateTime: false, updateGroup: false, remove: true }
     };
 }
 
@@ -17,6 +19,7 @@ function OLD_characterToItem(character) {
         items.push({
             id: character.name + "_ITEM_" + i,
             content: "" + age,
+            title: character.name,
             start: toStartDate(i),
             end: toEndDate(i),
             group: character.name + "_GR"
@@ -30,6 +33,7 @@ function eventToItem(event) {
     return {
         id: event.name,
         content: event.name,
+        title: event.name,
         start: toMiddleDate(event.start),
         end: null,
         type: 'point',
@@ -41,10 +45,11 @@ function eraToItem(era) {
     return {
         id: era.name,
         content: era.name,
-        start: toStartDate(era.start),
-        end: toEndDate(era.end),
-        type: 'range',
-        group: 'ERA'
+        title: era.name,
+        start: toMiddleDate(era.start),
+        end: toMiddleDate(era.end),
+        type: 'background',
+        className: era.className
     };
 }
 
@@ -52,6 +57,7 @@ function filmToItem(film) {
     return {
         id: film.name,
         content: film.name,
+        title: film.name,
         start: toMiddleDate(film.start),
         end: null,
         type: 'point',
@@ -63,6 +69,7 @@ function serieToItem(serie) {
     return {
         id: serie.name,
         content: serie.name,
+        title: serie.name,
         start: toStartDate(serie.start),
         end: toEndDate(serie.end),
         type: 'range',

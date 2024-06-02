@@ -2,12 +2,12 @@ const groups = new vis.DataSet();
 
 groups.add([
     {
-        id: "Events",
-        content: "Events"
-    },
-    {
         id: "ERA",
         content: "ERA"
+    },
+    {
+        id: "Events",
+        content: "Events"
     },
     {
         id: "Films",
@@ -16,17 +16,21 @@ groups.add([
     {
         id: "TV Series",
         content: "TV Series"
+    },
+    {
+        id: "Characters",
+        content: "Characters"
     }
 ]);
 
-const characterGroups = characters.map(character => {
-        return {
-            id: character.name + "_GR",
-            content: character.name
-        };
-    }
-);
-groups.add(characterGroups);
+// const characterGroups = characters.map(character => {
+//         return {
+//             id: character.name + "_GR",
+//             content: character.name
+//         };
+//     }
+// );
+// groups.add(characterGroups);
 
 const items = new vis.DataSet({type: {start: 'ISODate', end: 'ISODate'}});
 items.add(events.map(event => eventToItem(event)));
@@ -52,6 +56,10 @@ const options = {
     },
     showCurrentTime: false,
     selectable: true,
+    showTooltips: true,
+    tooltip: {
+        followMouse: true
+    }
 };
 
 const timeline = new vis.Timeline(container, items, groups, options);

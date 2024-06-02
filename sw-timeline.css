@@ -4,17 +4,6 @@ html {
     font-size: 11pt;
 }
 
-.vis-item.vis-background.negative {
-    background-color: rgba(255, 0, 0, 0.2);
-}
-
-.vis-item.vis-background.positive {
-    background-color: rgba(105, 255, 98, 0.2);
-}
-
-.vis-item.vis-background.marker {
-    border-left: 2px solid green;
-}
 
 table {
     border: 1px solid gray;
@@ -30,4 +19,18 @@ code {
     color: #c7254e;
     background-color: #f9f2f4;
     border-radius: 4px;
+}
+
+/* ERAS */
+
+.vis-item.vis-background.era_rep {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.vis-item.vis-background.era_empire {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.vis-item.vis-background.era_new_rep {
+    background-color: rgba(0, 0, 255, 0.2);
 }
