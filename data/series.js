@@ -49,11 +49,11 @@ var series = [
         start: 9,
         end: 9,
     },
-    {
-        name: 'Skeleton Crew',
-        start: 9,
-        end: 9,
-    },
+    // {
+    //     name: 'Skeleton Crew',
+    //     start: 9,
+    //     end: 9,
+    // },
     {
         name: 'Star Wars Resistance',
         start: 34,

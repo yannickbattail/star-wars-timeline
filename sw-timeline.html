@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <title>Star Wars Timeline</title>
-    <script src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"
-            type="text/javascript"></script>
+    <script src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js" type="text/javascript"></script>
     <script src="calendar-aby-utils.js" type="text/javascript"></script>
     <script src="mapping-functions.js" type="text/javascript"></script>
     <script src="data/characters.js" type="text/javascript"></script>
@@ -11,11 +10,21 @@
     <script src="data/events.js" type="text/javascript"></script>
     <script src="data/films.js" type="text/javascript"></script>
     <script src="data/series.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet"
-          type="text/css"/>
+    <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css"/>
     <link href="sw-timeline.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<label for="characterSearch">Search for a character to display:</label>
+<input type="search" list="characterDataList" id="characterSearch" placeholder="vader" />
+<datalist id="characterDataList">
+    <option value="Internet Explorer">
+    <option value="Firefox">
+    <option value="Google Chrome">
+    <option value="Opera">
+    <option value="Safari">
+</datalist>
+<button onclick="showCharacter();">Search</button>
+<br />
 <div id="visualization"></div>
 <script language="JavaScript" src="sw-timeline.js"></script>
 </body>

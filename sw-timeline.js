@@ -37,7 +37,7 @@ items.add(events.map(event => eventToItem(event)));
 items.add(eras.map(era => eraToItem(era)));
 items.add(films.map(film => filmToItem(film)));
 items.add(series.map(serie => serieToItem(serie)));
-items.add(characters.map(character => characterToItem(character)));
+//items.add(characters.map(character => characterToItem(character)));
 //items.add(characters.flatMap(character => OLD_characterToItem(character)));
 
 const container = document.getElementById('visualization');
@@ -67,3 +67,18 @@ timeline.addCustomTime(toMiddleDate(-19), 'line_order66');
 timeline.addCustomTime(toMiddleDate(0), 'line_time0');
 timeline.addCustomTime(toMiddleDate(9), 'mandoverse');
 timeline.addCustomTime(toMiddleDate(34), 'resistance');
+
+function characterToDataList() {
+    let dataListOption = "";
+    for (const character of characters) {
+        dataListOption += '<option value="'+character.name+'">';
+    }
+    return dataListOption;
+}
+document.getElementById('characterDataList').innerHTML = characterToDataList();
+
+function showCharacter() {
+    let character = characters.find(char => char.name == document.getElementById('characterSearch').value);
+    if (character)
+    items.add(characterToItem(character));
+}
