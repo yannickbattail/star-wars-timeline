@@ -1,22 +1,24 @@
 
 const groups = new vis.DataSet();
 
-groups.add({
-   id: "Events",
-   content: "Events"
-});
-groups.add({
-   id: "ERA",
-   content: "ERA"
-});
-groups.add({
-  id: "Films",
-  content: "Films"
-});
-groups.add({
-  id: "TV Series",
-  content: "TV Series"
-});
+groups.add([
+{
+    id: "Events",
+    content: "Events"
+},
+{
+    id: "ERA",
+    content: "ERA"
+},
+{
+    id: "Films",
+    content: "Films"
+},
+{
+    id: "TV Series",
+    content: "TV Series"
+}
+]);
 
 const characterGroups = characters.map(character => {
         return {
@@ -28,11 +30,12 @@ const characterGroups = characters.map(character => {
 groups.add(characterGroups);
 
 const items = new vis.DataSet({type: {start: 'ISODate', end: 'ISODate'}});
-items.add(events);
-items.add(era);
-items.add(films);
-items.add(series);
-items.add(characters.flatMap(character => characterToItems(character)));
+items.add(events.map(event => eventToItem(event)));
+items.add(eras.map(era => eraToItem(era)));
+items.add(films.map(film => filmToItem(film)));
+items.add(series.map(serie => serieToItem(serie)));
+items.add(characters.map(character => characterToItem(character)));
+//items.add(characters.flatMap(character => OLD_characterToItem(character)));
 
 const container = document.getElementById('visualization');
 const options = {
