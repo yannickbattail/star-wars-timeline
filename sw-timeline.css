@@ -34,3 +34,18 @@ code {
 .vis-item.vis-background.era_new_rep {
     background-color: rgba(0, 0, 255, 0.2);
 }
+
+/* characters */
+
+.vis-item.vis-range.born-alive {
+    background: linear-gradient(90deg, rgba(87,227,255,1) 0%, rgba(87,227,255,1) 75%, rgba(255,255,255,0) 100%);
+}
+.vis-item.vis-range.born-dead {
+    background: rgb(0, 212, 255);
+}
+.vis-item.vis-range.nborn-alive {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(87,227,255,1) 25%, rgba(87,227,255,1) 75%, rgba(255,255,255,0) 100%);
+}
+.vis-item.vis-range.nborn-dead {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(87,227,255,1) 25%);
+}

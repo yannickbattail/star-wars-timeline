@@ -1,10 +1,17 @@
 function characterToItem(character) {
+    const alive = character.death === null;
+    const born = character.birth !== null;
+    const className = (born?"":"n")+(alive?"born-alive":"born-dead");
+    const content = character.name
+        + " (" + (born ? ("*"+character.birth) : character.aliveBefore)
+        + " - " + (alive ? character.aliveAfter : ("†" + character.death)) + ")";
     return {
         id: character.name,
-        content: character.name,
-        title: character.name,
-        start: toStartDate(character.birth),
-        end: toStartDate(character.death !== null ? character.death : character.birth + 100),
+        content: content,
+        title: content,
+        start: toStartDate(born ? character.birth : (character.aliveBefore - 20)),
+        end: toStartDate(alive ? character.aliveAfter + 10 : character.death),
+        className: className,
         group: "Characters",
         editable: { updateTime: false, updateGroup: false, remove: true }
     };

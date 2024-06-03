@@ -13,5 +13,10 @@ var events = [
         name: 'Destruction of Death Star II',
         start: 4,
         end: null
+    },
+    {
+        name: 'Battle of Exegol',
+        start: 35,
+        end: null
     }
 ];

@@ -72,6 +72,12 @@ function characterToDataList() {
     let dataListOption = "";
     for (const character of characters) {
         dataListOption += '<option value="'+character.name+'">';
+        if (character.birth === null && character.aliveBefore === null) {
+            console.warn('for a character birth or aliveBefore must be defined');
+        }
+        if (character.death === null && character.aliveAfter === null) {
+            console.warn('for a character death or aliveAfter must be defined');
+        }
     }
     return dataListOption;
 }
