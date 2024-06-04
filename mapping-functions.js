@@ -25,12 +25,13 @@ function characterAgeToItem(character) {
         + " - " + (alive ? character.aliveAfter : ("†" + character.death)) + ")";
     let dateStart = born ? character.birth : (character.aliveBefore - 20);
     let dateEnd = alive ? character.aliveAfter + 10 : character.death;
+    const around = born?"":"≈";
     let items = [];
     let age = 0;
     for (let i = dateStart; i <= dateEnd; i++) {
         items.push({
             id: character.name + "_ITEM_" + i,
-            content: "" + (i === character.death?"† ":"") + (i === character.birth?"* ":"") + age,
+            content: "" + (i === character.death?"† ":"") + (i === character.birth?"* ":"") + around + age,
             title: title,
             start: toStartDate(i),
             end: toEndDate(i),
