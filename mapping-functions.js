@@ -2,13 +2,13 @@ function characterToItem(character) {
     const alive = character.death === null;
     const born = character.birth !== null;
     const className = (born?"":"n")+(alive?"born-alive":"born-dead");
-    const content = character.name
+    const title = character.name
         + " (" + (born ? ("*"+character.birth) : character.aliveBefore)
         + " - " + (alive ? character.aliveAfter : ("†" + character.death)) + ")";
     return {
         id: character.name,
-        content: content,
-        title: content,
+        content: character.name,
+        title: title,
         start: toStartDate(born ? character.birth : (character.aliveBefore - 20)),
         end: toStartDate(alive ? character.aliveAfter + 10 : character.death),
         className: className,
@@ -17,19 +17,25 @@ function characterToItem(character) {
     };
 }
 
-function OLD_characterToItem(character) {
-    let dateStart = character.birth;
-    let dateEnd = character.death !== null ? character.death : character.birth + 100;
+function characterAgeToItem(character) {
+    const alive = character.death === null;
+    const born = character.birth !== null;
+    const title = character.name
+        + " (" + (born ? ("*"+character.birth) : character.aliveBefore)
+        + " - " + (alive ? character.aliveAfter : ("†" + character.death)) + ")";
+    let dateStart = born ? character.birth : (character.aliveBefore - 20);
+    let dateEnd = alive ? character.aliveAfter + 10 : character.death;
     let items = [];
     let age = 0;
     for (let i = dateStart; i <= dateEnd; i++) {
         items.push({
             id: character.name + "_ITEM_" + i,
-            content: "" + age,
-            title: character.name,
+            content: "" + (i === character.death?"† ":"") + (i === character.birth?"* ":"") + age,
+            title: title,
             start: toStartDate(i),
             end: toEndDate(i),
-            group: character.name + "_GR"
+            group: character.name + "_GR",
+            editable: { updateTime: false, updateGroup: false, remove: true }
         });
         age++;
     }

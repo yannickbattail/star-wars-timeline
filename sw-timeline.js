@@ -84,7 +84,21 @@ function characterToDataList() {
 document.getElementById('characterDataList').innerHTML = characterToDataList();
 
 function showCharacter() {
-    let character = characters.find(char => char.name == document.getElementById('characterSearch').value);
-    if (character)
-    items.add(characterToItem(character));
+    if (!document.getElementById('characterSearch')) return;
+    if (!document.getElementById('characterSearch').value) return;
+
+    const characterName = document.getElementById('characterSearch').value;
+    let character = characters.find(char => char.name === characterName);
+    if (character) {
+        if (document.getElementById('showAge').checked) {
+            groups.add({
+                id: character.name + "_GR",
+                content: character.name
+            });
+            items.add(characterAgeToItem(character));
+        } else {
+            items.add(characterToItem(character));
+        }
+
+    }
 }
