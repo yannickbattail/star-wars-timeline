@@ -40,7 +40,7 @@ items.add(series.map(serie => serieToItem(serie)));
 //items.add(characters.map(character => characterToItem(character)));
 //items.add(characters.flatMap(character => OLD_characterToItem(character)));
 
-const container = document.getElementById('visualization');
+const container = document.getElementById('timelineContainer');
 const options = {
     //stack: false,
     // orientation:'top'
@@ -63,15 +63,27 @@ const options = {
 };
 
 const timeline = new vis.Timeline(container, items, groups, options);
-timeline.addCustomTime(toMiddleDate(-19), 'line_order66');
+// timeline.addCustomTime(toMiddleDate(-19), 'line_order66');
 timeline.addCustomTime(toMiddleDate(0), 'line_time0');
-timeline.addCustomTime(toMiddleDate(9), 'mandoverse');
-timeline.addCustomTime(toMiddleDate(34), 'resistance');
+// timeline.addCustomTime(toMiddleDate(9), 'mandoverse');
+// timeline.addCustomTime(toMiddleDate(34), 'resistance');
+
+document.getElementById('timelineContainer').onmouseover = function (event) {
+    const props = timeline.getEventProperties(event);
+    if (props.what === 'item') {
+        const item = items.get(props.item);
+        if (item && item.group === "Characters") {
+            const precis = item.className.startsWith("n") ? "≈" : "";
+            item.title = item.content + " Age: " + precis + (toAbyYear(props.snappedTime) - toAbyYear(item.start));
+            items.update(item);
+        }
+    }
+}
 
 function characterToDataList() {
     let dataListOption = "";
     for (const character of characters) {
-        dataListOption += '<option value="'+character.name+'">';
+        dataListOption += '<option value="' + character.name + '">';
         if (character.birth === null && character.aliveBefore === null) {
             console.warn('for a character birth or aliveBefore must be defined');
         }
@@ -81,6 +93,7 @@ function characterToDataList() {
     }
     return dataListOption;
 }
+
 document.getElementById('characterDataList').innerHTML = characterToDataList();
 
 function showCharacter() {
@@ -90,7 +103,7 @@ function showCharacter() {
     const characterName = document.getElementById('characterSearch').value;
     let character = characters.find(char => char.name === characterName);
     if (character) {
-        if (document.getElementById('showAge').checked) {
+        if (document.getElementById('showAge') && document.getElementById('showAge').checked) {
             groups.add({
                 id: character.name + "_GR",
                 content: character.name

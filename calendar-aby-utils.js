@@ -1,10 +1,26 @@
-function formatLabel(date, scale, step) {
+function toAbyYear(date) {
     if (date === null) return null;
-    let year = date.format('YYYY');
-    if (year >= 2000) {
-        return "" + (year - 2000) + " ABY"
+    let year;
+    if (typeof "foo" === "string") {
+        year = new Date(date).getFullYear();
+    } else if (date instanceof Date) {
+        year = date.getFullYear();
     } else {
-        return "" + (2000 - year) + " BBY"
+        year = date.format('YYYY');
+    }
+    if (year >= 2000) {
+        return year - 2000;
+    } else {
+        return (2000 - year) * -1
+    }
+}
+
+function formatLabel(date/*, scale, step*/) {
+    let abyYear = toAbyYear(date);
+    if (abyYear >= 0) {
+        return "" + abyYear + " ABY";
+    } else {
+        return "" + (abyYear * -1) + " BBY";
     }
 }
 
