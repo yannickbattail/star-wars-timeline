@@ -64,6 +64,14 @@ const charactersData = [
         keywords: []
     },
     {
+        name: "C3PO",
+        birth: -34, // Between 34 BBY and 32 BBY
+        aliveBefore: null,
+        aliveAfter: 35,
+        death: null,
+        keywords: []
+    },
+    {
         name: "Landonis Balthazar Calrissian",
         birth: -43,
         aliveBefore: null,
@@ -380,6 +388,14 @@ const charactersData = [
         birth: -31,
         aliveBefore: null,
         aliveAfter: 5,
+        death: null,
+        keywords: []
+    },
+    {
+        name: "R2D2",
+        birth: -32,
+        aliveBefore: null,
+        aliveAfter: 35,
         death: null,
         keywords: []
     },
