@@ -1,4 +1,4 @@
-const characters = [
+const charactersData = [
     {
         name: "Gial Ackbar",
         birth: -52,

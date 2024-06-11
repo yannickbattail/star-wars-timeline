@@ -1,3 +1,5 @@
+const characters = charactersData.map(c => new Character(c));
+
 const groups = new vis.DataSet();
 
 groups.add([
@@ -104,13 +106,10 @@ function showCharacter() {
     let character = characters.find(char => char.name === characterName);
     if (character) {
         if (document.getElementById('showAge') && document.getElementById('showAge').checked) {
-            groups.add({
-                id: character.name + "_GR",
-                content: character.name
-            });
-            items.add(characterAgeToItem(character));
+            groups.add(character.toGroup());
+            items.add(character.toItemAge());
         } else {
-            items.add(characterToItem(character));
+            items.add(character.toItem());
         }
 
     }
