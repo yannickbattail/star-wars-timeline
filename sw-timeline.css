@@ -23,6 +23,10 @@ code {
 
 /* ERAS */
 
+.vis-item.vis-background.era_high_rep {
+    background-color: rgba(255, 255, 0, 0.2);
+}
+
 .vis-item.vis-background.era_rep {
     background-color: rgba(255, 0, 0, 0.2);
 }
@@ -38,14 +42,17 @@ code {
 /* characters */
 
 .vis-item.vis-range.born-alive {
-    background: linear-gradient(90deg, rgba(87,227,255,1) 0%, rgba(87,227,255,1) 75%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(87, 227, 255, 1) 0%, rgba(87, 227, 255, 1) 75%, rgba(255, 255, 255, 0) 100%);
 }
+
 .vis-item.vis-range.born-dead {
     background: rgb(0, 212, 255);
 }
+
 .vis-item.vis-range.nborn-alive {
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(87,227,255,1) 25%, rgba(87,227,255,1) 75%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(87, 227, 255, 1) 25%, rgba(87, 227, 255, 1) 75%, rgba(255, 255, 255, 0) 100%);
 }
+
 .vis-item.vis-range.nborn-dead {
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(87,227,255,1) 25%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(87, 227, 255, 1) 25%);
 }

@@ -1,5 +1,11 @@
 var eras = [
     {
+        name: 'High Republic',
+        start: -500,
+        end: -100,
+        className: "era_high_rep"
+    },
+    {
         name: 'Galactic Republic',
         start: -1000,
         end: -19,
