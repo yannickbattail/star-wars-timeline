@@ -656,4 +656,133 @@ const charactersData = [
         death: null,
         keywords: ["The Acolyte"]
     },
+    /////// Jedi High Council ///////
+    {
+        name: "Ki-Adi-Mundi",
+        birth: null,
+        aliveBefore: -32,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Plo Koon",
+        birth: null,
+        aliveBefore: -33, //  discovering of Ahsoka Tano
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Saesee Tiin",
+        birth: null,
+        aliveBefore: -50,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Even Piell",
+        birth: null,
+        aliveBefore: -33,
+        aliveAfter: null,
+        death: -20,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Even Piell",
+        birth: null,
+        aliveBefore: -33,
+        aliveAfter: null,
+        death: -20,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Yarael Poof",
+        birth: null,
+        aliveBefore: -232,
+        aliveAfter: null,
+        death: -22,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Oppo Rancisis",
+        birth: null,
+        aliveBefore: -232,
+        aliveAfter: -14,
+        death: null,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Eeth Koth",
+        birth: null,
+        aliveBefore: -40,
+        aliveAfter: null,
+        death: -14,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Adi Gallia",
+        birth: null,
+        aliveBefore: -32,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Depa Billaba",
+        birth: null,
+        aliveBefore: -32,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Coleman Trebor",
+        birth: null,
+        aliveBefore: -22,
+        aliveAfter: null,
+        death: -22,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Shaak Ti",
+        birth: null,
+        aliveBefore: -32,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Kit Fisto",
+        birth: null,
+        aliveBefore: -34,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Agen Kolar",
+        birth: null,
+        aliveBefore: -22,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Stass Allie",
+        birth: null,
+        aliveBefore: -22,
+        aliveAfter: null,
+        death: -19,
+        keywords: ["Jedi High Council"]
+    },
+    {
+        name: "Coleman Kcaj",
+        birth: null,
+        aliveBefore: -19,
+        aliveAfter: null,
+        death: -9,
+        keywords: ["Jedi High Council"]
+    },
 ];
