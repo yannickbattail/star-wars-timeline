@@ -44,15 +44,15 @@ const container = document.getElementById('timelineContainer');
 const options = {
     //stack: false,
     // orientation:'top'
-    start: toStartDate(-40),
-    end: toEndDate(40),
+    start: GsCal.toStartDate(-40),
+    end: GsCal.toEndDate(40),
     timeAxis: {
         scale: 'year',
         step: 1
     },
     format: {
-        minorLabels: formatLabel,
-        majorLabels: formatLabel
+        minorLabels: GsCal.formatLabel,
+        majorLabels: GsCal.formatLabel
     },
     showCurrentTime: false,
     selectable: true,
@@ -63,10 +63,10 @@ const options = {
 };
 
 const timeline = new vis.Timeline(container, items, groups, options);
-// timeline.addCustomTime(toMiddleDate(-19), 'line_order66');
-timeline.addCustomTime(toMiddleDate(0), 'line_time0');
-// timeline.addCustomTime(toMiddleDate(9), 'mandoverse');
-// timeline.addCustomTime(toMiddleDate(34), 'resistance');
+// timeline.addCustomTime(GsCal.toMiddleDate(-19), 'line_order66');
+timeline.addCustomTime(GsCal.toMiddleDate(0), 'line_time0');
+// timeline.addCustomTime(GsCal.toMiddleDate(9), 'mandoverse');
+// timeline.addCustomTime(GsCal.toMiddleDate(34), 'resistance');
 
 document.getElementById('timelineContainer').onmouseover = function (event) {
     const props = timeline.getEventProperties(event);
@@ -74,7 +74,7 @@ document.getElementById('timelineContainer').onmouseover = function (event) {
         const item = items.get(props.item);
         if (item && item.group === "Characters") {
             const precis = item.className.startsWith("n") ? "≈" : "";
-            item.title = item.content + " Age: " + precis + (toAbyYear(props.snappedTime) - toAbyYear(item.start));
+            item.title = item.content + " Age: " + precis + (GsCal.toAbyYear(props.snappedTime) - GsCal.toAbyYear(item.start));
             items.update(item);
         }
     }
