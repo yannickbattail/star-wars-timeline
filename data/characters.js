@@ -281,7 +281,7 @@ const charactersData = [
     },
     {
         name: "Bo-Katan Kryze",
-        birth: -45,
+        birth: null,
         aliveBefore: -45,
         aliveAfter: 9,
         death: null,
@@ -566,5 +566,94 @@ const charactersData = [
         aliveAfter: null,
         death: 4,
         keywords: []
+    },
+    ////// The Acolyte ///////
+    {
+        name: "Jecki Lon",
+        birth: -150,
+        aliveBefore: null,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Vernestra Rwoh",
+        birth: -248,
+        aliveBefore: null,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Yord Fandar",
+        birth: null,
+        aliveBefore: -134,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Tasi Lowa",
+        birth: null,
+        aliveBefore: -132,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Sol",
+        birth: null,
+        aliveBefore: -132,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Osha Aniseya",
+        birth: -156,
+        aliveBefore: null,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Mae Aniseya",
+        birth: -156,
+        aliveBefore: null,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Indara",
+        birth: null,
+        aliveBefore: -148,
+        aliveAfter: null,
+        death: -132,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Kelnacca",
+        birth: null,
+        aliveBefore: -148,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Torbin",
+        birth: null,
+        aliveBefore: -148,
+        aliveAfter: null,
+        death: -132,
+        keywords: ["The Acolyte"]
+    },
+    {
+        name: "Qimir",
+        birth: null,
+        aliveBefore: -148,
+        aliveAfter: -132,
+        death: null,
+        keywords: ["The Acolyte"]
     },
 ];
