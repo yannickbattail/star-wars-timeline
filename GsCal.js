@@ -11,19 +11,14 @@ class GsCal {
             year = date.format('YYYY');
         }
         if (year >= 2000) {
-            return year - 2000;
+            return new FuzzyGsDate(year - 2000);
         } else {
-            return (2000 - year) * -1
+            return new FuzzyGsDate((2000 - year) * -1);
         }
     }
 
     static formatLabel(date/*, scale, step*/) {
-        let abyYear = GsCal.toAbyYear(date);
-        if (abyYear >= 0) {
-            return "" + abyYear + " ABY";
-        } else {
-            return "" + (abyYear * -1) + " BBY";
-        }
+        return GsCal.toAbyYear(date).toLocaleString();
     }
 
     static toStartDate(year_ABY) {
