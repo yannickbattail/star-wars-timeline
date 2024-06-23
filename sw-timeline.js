@@ -1,4 +1,5 @@
 const characters = charactersData.map(c => new Character(c));
+checkDuplicateNames(characters);
 
 const groups = new vis.DataSet();
 
@@ -33,6 +34,7 @@ groups.add([
 //     }
 // );
 // groups.add(characterGroups);
+
 
 const items = new vis.DataSet({type: {start: 'ISODate', end: 'ISODate'}});
 items.add(events.map(event => eventToItem(event)));
@@ -104,6 +106,14 @@ function showCharacter() {
 
     const characterName = document.getElementById('characterSearch').value;
     let character = characters.find(char => char.name === characterName);
+    displayCharacter(character);
+}
+
+function showAllCharacters() {
+    characters.forEach(character => displayCharacter(character));
+}
+
+function displayCharacter(character) {
     if (character) {
         if (document.getElementById('showAge') && document.getElementById('showAge').checked) {
             groups.add(character.toGroup());
@@ -111,6 +121,39 @@ function showCharacter() {
         } else {
             items.add(character.toItem());
         }
-
     }
+}
+
+/**
+ * @description
+ * Takes an Array<V>, and a grouping function,
+ * and returns a Map of the array grouped by the grouping function.
+ *
+ * @param list An array of type V.
+ * @param keyGetter A Function that takes the Array type V as an input, and returns a value of type K.
+ *                  K is generally intended to be a property key of V.
+ *
+ * @returns Map of the array grouped by the grouping function.
+ */
+//export function groupBy<K, V>(list: Array<V>, keyGetter: (input: V) => K): Map<K, Array<V>> {
+//    const map = new Map<K, Array<V>>();
+function groupBy(list, keyGetter) {
+    const map = new Map();
+    list.forEach((item) => {
+        const key = keyGetter(item);
+        const collection = map.get(key);
+        if (!collection) {
+            map.set(key, [item]);
+        } else {
+            collection.push(item);
+        }
+    });
+    return map;
+}
+
+function checkDuplicateNames(characters) {
+    var gr = groupBy(characters, c => c.name);
+    var f = [...gr].filter(charGroup => charGroup[1].length > 1)
+    f.forEach((charGroup) => console.warn("duplicate character name: " + charGroup[0]));
+
 }
