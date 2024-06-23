@@ -9,6 +9,15 @@ class Character {
     url = "";
     image = "";
     comments = "";
+    // item properties
+    id = "";
+    content = "";
+    title = "";
+    start = new Date();
+    end = new Date();
+    className = "";
+    group = "";
+    editable = {};
 
     constructor(obj) {
         this.name = obj.name;
@@ -20,6 +29,21 @@ class Character {
         this.url = obj.url;
         this.image = obj.image;
         this.comments = obj.comments;
+        this.validate();
+
+        this.id = this.name;
+        this.content = this.name;
+        this.title = this.name
+            + " (" + (this.IsBirthKnown() ? ("*" + this.birth.format()) : this.aliveBefore.format())
+            + " - " + (this.IsDeathKnown() ? ("†" + this.death.format()) : this.aliveAfter.format()) + ") " + this.comments;
+        this.start = GsCal.toStartDate(this.birth.gsDate !== null ? this.birth.getRangeStart() : this.aliveBefore.getRangeStart());
+        this.end = GsCal.toStartDate(this.death.gsDate !== null ? this.death.getRangeEnd() : this.aliveAfter.getRangeEnd());
+        this.className = (this.IsBirthKnown() ? "" : "n") + (this.IsDeathKnown() ? "born-dead" : "born-alive");
+        this.group = "Characters";
+        this.editable = {updateTime: false, updateGroup: false, remove: true};
+    }
+
+    validate() {
         if (!this.name) {
             throw "name is not defined";
         }
@@ -45,48 +69,6 @@ class Character {
     }
     IsDeathKnown() {
         return this.death.gsDate != null && this.death.precision === 0;
-    }
-
-    toItem() {
-        const className = (this.IsBirthKnown() ? "" : "n") + (this.IsDeathKnown() ? "born-dead" : "born-alive" );
-        const title = this.name
-            + " (" + (this.IsBirthKnown() ? ("*" + this.birth.format()) : this.aliveBefore.format())
-            + " - " + (this.IsDeathKnown() ?  ("†" + this.death.format()) : this.aliveAfter.format()) + ") " + this.comments;
-        // TODO add url and image
-        return {
-            id: this.name,
-            content: this.name,
-            title: title,
-            start: GsCal.toStartDate(this.birth.gsDate !== null ? this.birth.getRangeStart() : this.aliveBefore.getRangeStart()),
-            end: GsCal.toStartDate(this.death.gsDate !== null ? this.death.getRangeEnd() : this.aliveAfter.getRangeEnd()),
-            className: className,
-            group: "Characters",
-            editable: {updateTime: false, updateGroup: false, remove: true}
-        };
-    }
-
-    toItemAge() {
-        const title = this.name
-            + " (" + (this.IsBirthKnown() ? ("*" + this.birth) : this.aliveBefore)
-            + " - " + (this.IsDeathKnown() ? this.aliveAfter : ("†" + this.death)) + ")";
-        let dateStart = this.IsBirthKnown() ? this.birth : (this.aliveBefore - 20);
-        let dateEnd = this.IsDeathKnown() ? this.aliveAfter + 10 : this.death;
-        const around = this.IsBirthKnown() ? "" : "≈";
-        let items = [];
-        let age = 0;
-        for (let i = dateStart; i <= dateEnd; i++) {
-            items.push({
-                id: this.name + "_ITEM_" + i,
-                content: "" + (i === this.death ? "† " : "") + (i === this.birth ? "* " : "") + around + age,
-                title: title,
-                start: GsCal.toStartDate(i),
-                end: GsCal.toEndDate(i),
-                group: this.name + "_GR",
-                editable: {updateTime: false, updateGroup: false, remove: true}
-            });
-            age++;
-        }
-        return items;
     }
 
     toGroup() {

@@ -1,5 +1,5 @@
 const characters = charactersData.map(c => new Character(c));
-checkDuplicateNames(characters);
+//checkDuplicateNames(characters);
 
 const groups = new vis.DataSet();
 
@@ -106,22 +106,13 @@ function showCharacter() {
 
     const characterName = document.getElementById('characterSearch').value;
     let character = characters.find(char => char.name === characterName);
-    displayCharacter(character);
+    if (character) {
+        items.add(character);
+    }
 }
 
 function showAllCharacters() {
-    characters.forEach(character => displayCharacter(character));
-}
-
-function displayCharacter(character) {
-    if (character) {
-        if (document.getElementById('showAge') && document.getElementById('showAge').checked) {
-            groups.add(character.toGroup());
-            items.add(character.toItemAge());
-        } else {
-            items.add(character.toItem());
-        }
-    }
+    characters.forEach(character => items.add(character));
 }
 
 /**
@@ -155,5 +146,4 @@ function checkDuplicateNames(characters) {
     var gr = groupBy(characters, c => c.name);
     var f = [...gr].filter(charGroup => charGroup[1].length > 1)
     f.forEach((charGroup) => console.warn("duplicate character name: " + charGroup[0]));
-
 }
