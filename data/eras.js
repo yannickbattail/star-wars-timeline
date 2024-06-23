@@ -1,4 +1,4 @@
-var eras = [
+const eras = [
     {
         name: 'High Republic',
         start: -500,

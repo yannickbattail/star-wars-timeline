@@ -143,7 +143,6 @@ function groupBy(list, keyGetter) {
 }
 
 function checkDuplicateNames(characters) {
-    var gr = groupBy(characters, c => c.name);
-    var f = [...gr].filter(charGroup => charGroup[1].length > 1)
-    f.forEach((charGroup) => console.warn("duplicate character name: " + charGroup[0]));
+    const gr = groupBy(characters, c => c.name);
+    [...gr].filter(charGroup => charGroup[1].length > 1).forEach((charGroup) => console.warn("duplicate character name: " + charGroup[0]));
 }

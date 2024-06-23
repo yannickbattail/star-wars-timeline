@@ -1,4 +1,3 @@
-
 function eventToItem(event) {
     return {
         id: event.name,

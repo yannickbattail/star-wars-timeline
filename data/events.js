@@ -1,4 +1,4 @@
-var events = [
+const events = [
     {
         name: 'Order 66',
         start: -19,

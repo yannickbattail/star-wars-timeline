@@ -1,4 +1,4 @@
-var series = [
+const series = [
     {
         name: 'Young Jedi Adventures',
         start: -232,
