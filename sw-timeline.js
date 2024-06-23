@@ -1,5 +1,5 @@
 const characters = charactersData.map(c => new Character(c));
-checkDuplicateNames(characters);
+//checkDuplicateNames(characters);
 
 const groups = new vis.DataSet();
 
@@ -46,7 +46,7 @@ items.add(series.map(serie => serieToItem(serie)));
 
 const container = document.getElementById('timelineContainer');
 const options = {
-    //stack: false,
+    stack: true,
     // orientation:'top'
     start: GsCal.toStartDate(-40),
     end: GsCal.toEndDate(40),
@@ -60,9 +60,11 @@ const options = {
     },
     showCurrentTime: false,
     selectable: true,
+    verticalScroll: true,
     showTooltips: true,
     tooltip: {
-        followMouse: true
+        followMouse: true,
+        template: tooltipUpdate
     }
 };
 
@@ -72,15 +74,33 @@ timeline.addCustomTime(GsCal.toMiddleDate(0), 'line_time0');
 // timeline.addCustomTime(GsCal.toMiddleDate(9), 'mandoverse');
 // timeline.addCustomTime(GsCal.toMiddleDate(34), 'resistance');
 
-document.getElementById('timelineContainer').onmouseover = function (event) {
-    const props = timeline.getEventProperties(event);
-    if (props.what === 'item') {
-        const item = items.get(props.item);
+var mouseEvent;
+
+document.getElementById('timelineContainer').onmousemove = function (event) {
+    mouseEvent = {
+        event: event,
+        properties: timeline.getEventProperties(event)
+    };
+}
+
+/*document.getElementById('timelineContainer').onmouseover = function (event) {
+    const eventProperties = timeline.getEventProperties(event);
+    if (eventProperties.what === 'item') {
+        const item = items.get(eventProperties.item);
         if (item && item.group === "Characters") {
-            const precis = item.className.startsWith("n") ? "≈" : "";
-            item.title = item.content + " Age: " + precis + (GsCal.toAbyYear(props.snappedTime) - GsCal.toAbyYear(item.start));
-            items.update(item);
+            const characterItem = new Character(item);
+            characterItem.updateOnMouseOver(event, eventProperties);
+            items.update(characterItem);
         }
+    }
+}*/
+
+function tooltipUpdate(oldItem, newItem) {
+    if (newItem && newItem.group === "Characters") {
+        const characterItem = new Character(newItem);
+        return characterItem.buildTitle(GsCal.toAbyYear(mouseEvent.properties.snappedTime));
+    } else {
+        return newItem.title;
     }
 }
 
@@ -106,22 +126,19 @@ function showCharacter() {
 
     const characterName = document.getElementById('characterSearch').value;
     let character = characters.find(char => char.name === characterName);
-    displayCharacter(character);
+    if (character) {
+        items.add(character);
+    }
 }
 
 function showAllCharacters() {
-    characters.forEach(character => displayCharacter(character));
-}
-
-function displayCharacter(character) {
-    if (character) {
-        if (document.getElementById('showAge') && document.getElementById('showAge').checked) {
-            groups.add(character.toGroup());
-            items.add(character.toItemAge());
-        } else {
-            items.add(character.toItem());
+    characters.forEach(character => {
+        try {
+            items.add(character);
+        } catch (e) {
+            console.log(e);
         }
-    }
+    });
 }
 
 /**
@@ -152,8 +169,6 @@ function groupBy(list, keyGetter) {
 }
 
 function checkDuplicateNames(characters) {
-    var gr = groupBy(characters, c => c.name);
-    var f = [...gr].filter(charGroup => charGroup[1].length > 1)
-    f.forEach((charGroup) => console.warn("duplicate character name: " + charGroup[0]));
-
+    const gr = groupBy(characters, c => c.name);
+    [...gr].filter(charGroup => charGroup[1].length > 1).forEach((charGroup) => console.warn("duplicate character name: " + charGroup[0]));
 }
